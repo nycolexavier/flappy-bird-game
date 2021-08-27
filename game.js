@@ -9,6 +9,27 @@ sprites.src = 'assets/cenario/sprites.png';
 const canvas = document.querySelector('canvas')
 const contexto = canvas.getContext('2d')
 
+// mensagem de início
+const mensagemGetReady = {
+    spriteX: 134,
+    spriteY: 0,
+    largura: 174,
+    altura: 154,
+    x: (canvas.width / 2) - 174 / 2,
+    y: 50,
+
+    desenha() {
+        contexto.drawImage(
+            sprites,
+            mensagemGetReady.spriteX, mensagemGetReady.spriteY,
+            mensagemGetReady.largura, mensagemGetReady.altura,
+            mensagemGetReady.x, mensagemGetReady.y,
+            mensagemGetReady.largura, mensagemGetReady.altura,
+        )
+    }
+}
+
+
 // background 
 const planoDeFundo = {
     spriteX: 390,
@@ -100,11 +121,17 @@ const flappyBird = {
 
 // ajudar a reproduzir os quadros do jogo
 function loop () {
+
+    
     flappyBird.atualiza();
+
+
     planoDeFundo.desenha();
     chao.desenha();
     // chama a função que esta dentro da variável fllapyBird
     flappyBird.desenha();
+
+    mensagemGetReady.desenha()
     
     
 
