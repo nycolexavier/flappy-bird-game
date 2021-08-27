@@ -14,18 +14,21 @@ const flappyBird = {
     altura: 24,
     x: 10,
     y: 50,
+    desenha () {
+        // faz desenhar a parte da imagem que queremos
+        contexto.drawImage(
+            sprites,
+            flappyBird.spriteX, flappyBird.spriteY,// Srpite x, Sprite Y
+            flappyBird.largura, flappyBird.altura, // Tamanho do recorte na sprite
+            flappyBird.x, flappyBird.y, // posição X e Y dentro do canva
+            flappyBird.largura, flappyBird.altura,
+        );
+    }
 }
 
 // ajudar a reproduzir os quadros do jogo
 function loop () {
-    // faz desenhar a parte da imagem que queremos
-    contexto.drawImage(
-        sprites,
-        flappyBird.spriteX, flappyBird.spriteY,// Srpite x, Sprite Y
-        flappyBird.largura, flappyBird.altura, // Tamanho do recorte na sprite
-        flappyBird.x, flappyBird.y, // posição X e Y dentro do canva
-        flappyBird.largura, flappyBird.altura,
-    )
+    flappyBird.desenha();
 
     // ajudar a reproduzir os quadros do jogo
     requestAnimationFrame(loop);
