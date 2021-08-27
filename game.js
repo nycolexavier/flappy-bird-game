@@ -78,6 +78,14 @@ const flappyBird = {
     altura: 24,
     x: 10,
     y: 50,
+    gravidade: 0.25,
+    velocidade : 0,
+    atualiza () {
+        flappyBird.velocidade = flappyBird.velocidade + flappyBird.gravidade;
+        // console.log(flappyBird.velocidade)
+        flappyBird.y = flappyBird.y + flappyBird.velocidade;
+    },
+
     desenha () {
         // faz desenhar a parte da imagem que queremos
         contexto.drawImage(
@@ -92,10 +100,12 @@ const flappyBird = {
 
 // ajudar a reproduzir os quadros do jogo
 function loop () {
+    flappyBird.atualiza();
     planoDeFundo.desenha();
+    chao.desenha();
     // chama a função que esta dentro da variável fllapyBird
     flappyBird.desenha();
-    chao.desenha();
+    
     
 
     // ajudar a reproduzir os quadros do jogo
