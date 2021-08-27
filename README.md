@@ -42,7 +42,7 @@ MIT License ©
 ---
 
 <a href="https://nycole-xavierr.medium.com/">
- <img style="border-radius: 15%;" src="assets/eu01.jpeg" width="100px;" alt=""/>
+ <img style="border-radius: 15%;" src="assets/images-readme/eu01.jpeg" width="100px;" alt=""/>
  <br />
  <sub><b>Nycole Xavier</b></sub></a> <a href="https://nycole-xavierr.medium.com/" title="Medium">👩‍💻</a>
 
