@@ -119,24 +119,49 @@ const flappyBird = {
     }
 }
 
+// Telas
+let telaAtiva = {};
+function mudaParaTela (novaTela) {
+    telaAtiva = novaTela;
+}
+
+
+const Telas = {
+    inicio: {
+        desenha() {
+            planoDeFundo.desenha();
+            chao.desenha();
+            flappyBird.desenha();
+            mensagemGetReady.desenha();
+        },
+        atualiza() {
+
+        }
+    }
+}
+
+Telas.JOGO = {
+    desenha () {
+        planoDeFundo.desenha();
+        chao.desenha();
+        flappyBird.desenha();
+    },
+    atualiza () {
+        // chama a função que esta dentro da variável fllapyBird
+        flappyBird.atualiza
+    }
+}
+
+
 // ajudar a reproduzir os quadros do jogo
-function loop () {
+function loop () {   
 
-    
-    flappyBird.atualiza();
-
-
-    planoDeFundo.desenha();
-    chao.desenha();
-    // chama a função que esta dentro da variável fllapyBird
-    flappyBird.desenha();
-
-    mensagemGetReady.desenha()
-    
-    
+    telaAtiva.desenha();
+    telaAtiva.atualiza();
 
     // ajudar a reproduzir os quadros do jogo
     requestAnimationFrame(loop);
 }
 
+mudaParaTela(Telas.inicio);
 loop();
