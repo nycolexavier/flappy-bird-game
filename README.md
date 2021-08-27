@@ -17,7 +17,13 @@ Nesse repositório guardo o jogo que foi proposto nessa aula.
 
 ### Features
 
-- [ ] The Easiest Javascript Game Ever
+- [ ] Criando um Flappy Bird do ZERO!!!
+- [ ] Troca de Tela e Gravidade
+- [ ] Colisão, Pulo, Web Audio API
+- [ ] Cenário infinito a animando o passarinho com frames
+- [ ] Desenhando obstáculos dinamicamento e detectando Colisão
+- [ ] Adicionando o Placar, Tela de game over e muito mais! 
+
 
 ### Tecnologias
 
