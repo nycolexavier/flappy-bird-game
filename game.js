@@ -91,6 +91,17 @@ const chao = {
 
 };
 
+function fazColisao (flappyBird, chao) {
+    const flappyBirdY = flappyBird.y + flappyBird.altura;
+    const chaoY = chao.y;
+
+    if (flappyBirdY >= chaoY) {
+        return true;
+    }
+
+    return false;
+}
+
 // nosso personagem
 const flappyBird = {
     spriteX: 0,
@@ -107,6 +118,15 @@ const flappyBird = {
         flappyBird.velocidade = -flappyBird.pulo;
     },
     atualiza () {
+        if (fazColisao(flappyBird, chao)) {
+            console.log('Fez colisao')
+            mudaParaTela(Telas.inicio)
+
+            return;
+        }
+
+
+
         flappyBird.velocidade = flappyBird.velocidade + flappyBird.gravidade;
         // console.log(flappyBird.velocidade)
         flappyBird.y = flappyBird.y + flappyBird.velocidade;
