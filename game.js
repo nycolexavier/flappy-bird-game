@@ -1,3 +1,6 @@
+// ctx === contexto
+
+
 // carregar nossa imagem
 const sprites = new Image();
 sprites.src = 'assets/cenario/sprites.png';
@@ -13,17 +16,25 @@ const planoDeFundo = {
     largura: 275,
     altura: 204,
     x: 0,
-    y: cvs.height - 204,
+    y: canvas.height - 204,
 
     desenha() {
-        ctx.fillStyle = '#70c5ce';
-        ctx.fillStyle (0, 0, cvs.width, cvs.height);
+        contexto.fillStyle = '#70c5ce';
+        contexto.fillRect(0,0, canvas.width, canvas.height);
 
-        ctx.drawImage(
-            sprite,
+        contexto.drawImage(
+            sprites,
             planoDeFundo.spriteX, planoDeFundo.spriteY,
             planoDeFundo.largura, planoDeFundo.altura,
             planoDeFundo.x, planoDeFundo.y,
+            planoDeFundo.largura, planoDeFundo.altura,
+        );
+
+        contexto.drawImage(
+            sprites,
+            planoDeFundo.spriteX, planoDeFundo.spriteY,
+            planoDeFundo.largura, planoDeFundo.altura,
+            (planoDeFundo.x + planoDeFundo.largura), planoDeFundo.y,
             planoDeFundo.largura, planoDeFundo.altura,
         );
     },
@@ -44,6 +55,15 @@ const chao = {
             chao.spriteX, chao.spriteY,
             chao.largura, chao.altura,
             chao.x, chao.y,
+            chao.largura, chao.altura,
+        );
+        
+        //preencher todo o quadro
+        contexto.drawImage(
+            sprites,
+            chao.spriteX, chao.spriteY,
+            chao.largura, chao.altura,
+            (chao.x + chao.largura), chao.y,
             chao.largura, chao.altura,
         );
     },
@@ -72,8 +92,11 @@ const flappyBird = {
 
 // ajudar a reproduzir os quadros do jogo
 function loop () {
+    planoDeFundo.desenha();
     // chama a função que esta dentro da variável fllapyBird
     flappyBird.desenha();
+    chao.desenha();
+    
 
     // ajudar a reproduzir os quadros do jogo
     requestAnimationFrame(loop);
