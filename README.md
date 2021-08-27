@@ -1,3 +1,4 @@
+![flappy-bird-game-banner](https://user-images.githubusercontent.com/74930052/131127066-d87269b3-6a94-41ce-8707-9d940ea37123.png)
 ----
 <img src="https://img.shields.io/static/v1?label=Status&message=incomplete&color=ff0000&style=for-the-badge&logo=ghost"/>
  
