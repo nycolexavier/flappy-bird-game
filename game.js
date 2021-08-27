@@ -99,8 +99,13 @@ const flappyBird = {
     altura: 24,
     x: 10,
     y: 50,
+    pulo: 4.6,
     gravidade: 0.25,
     velocidade : 0,
+    pula() {
+        console.log('Devo pular');
+        flappyBird.velocidade = -flappyBird.pulo;
+    },
     atualiza () {
         flappyBird.velocidade = flappyBird.velocidade + flappyBird.gravidade;
         // console.log(flappyBird.velocidade)
@@ -147,6 +152,9 @@ Telas.JOGO = {
         planoDeFundo.desenha();
         chao.desenha();
         flappyBird.desenha();
+    },
+    click() {
+        flappyBird.pula();
     },
     atualiza () {
         // chama a função que esta dentro da variável fllapyBird
