@@ -125,7 +125,6 @@ function mudaParaTela (novaTela) {
     telaAtiva = novaTela;
 }
 
-
 const Telas = {
     inicio: {
         desenha() {
@@ -133,6 +132,9 @@ const Telas = {
             chao.desenha();
             flappyBird.desenha();
             mensagemGetReady.desenha();
+        },
+        click() {
+            mudaParaTela(Telas.JOGO)
         },
         atualiza() {
 
@@ -148,7 +150,7 @@ Telas.JOGO = {
     },
     atualiza () {
         // chama a função que esta dentro da variável fllapyBird
-        flappyBird.atualiza
+        flappyBird.atualiza();
     }
 }
 
@@ -162,6 +164,13 @@ function loop () {
     // ajudar a reproduzir os quadros do jogo
     requestAnimationFrame(loop);
 }
+
+window.addEventListener('click', function() {
+    if(telaAtiva.click) {
+        telaAtiva.click()
+    }
+})
+
 
 mudaParaTela(Telas.inicio);
 loop();
