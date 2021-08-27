@@ -18,7 +18,7 @@ Nesse repositório guardo o jogo que foi proposto nessa aula.
 ### Features
 
 - [X] Criando um Flappy Bird do ZERO!!!
-- [ ] Troca de Tela e Gravidade
+- [X] Troca de Tela e Gravidade
 - [ ] Colisão, Pulo, Web Audio API
 - [ ] Cenário infinito a animando o passarinho com frames
 - [ ] Desenhando obstáculos dinamicamento e detectando Colisão
