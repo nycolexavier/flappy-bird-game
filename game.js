@@ -83,6 +83,7 @@ function criaoChao() {
                 chao.largura, chao.altura,
                 chao.x, chao.y,
                 chao.largura, chao.altura,
+
             );
 
             //preencher todo o quadro
@@ -96,6 +97,8 @@ function criaoChao() {
         },
 
     };
+
+    return criaoChao();
 }
 
 
