@@ -97,12 +97,12 @@ function criaoChao() {
         },
 
     };
-
     return criaoChao();
+
 }
 
 
-function fazColisao(flappyBird, 
+function fazColisao(flappyBird,
     chao) {
     const flappyBirdY = flappyBird.y + flappyBird.altura;
     const chaoY = chao.y;
