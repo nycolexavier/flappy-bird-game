@@ -65,7 +65,6 @@ const planoDeFundo = {
 };
 
 function criaoChao() {
-    // Chão
     const chao = {
         spriteX: 0,
         spriteY: 610,
@@ -74,6 +73,9 @@ function criaoChao() {
         x: 0,
         // altura total do canva e subtrai 112
         y: canvas.height - 112,
+        atualiza() {
+
+        },
         desenha() {
             contexto.drawImage(
                 sprites,
