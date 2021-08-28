@@ -102,7 +102,8 @@ function criaoChao() {
 }
 
 
-function fazColisao(flappyBird, chao) {
+function fazColisao(flappyBird, 
+    chao) {
     const flappyBirdY = flappyBird.y + flappyBird.altura;
     const chaoY = chao.y;
 
@@ -130,7 +131,7 @@ function criaFlappyBird() {
             flappyBird.velocidade = -flappyBird.pulo;
         },
         atualiza() {
-            if (fazColisao(flappyBird, globais.chao)) {
+            if (fazColisao(flappyBird, chao)) {
                 console.log('Fez colisao')
                 somDe_HIT.play();
 
