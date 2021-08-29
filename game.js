@@ -97,7 +97,7 @@ function criaoChao() {
         },
 
     };
-    return criaoChao();
+    return chao;
 
 }
 
