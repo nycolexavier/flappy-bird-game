@@ -12,27 +12,6 @@ sprites.src = 'assets/cenario/sprites.png';
 const canvas = document.querySelector('canvas')
 const contexto = canvas.getContext('2d')
 
-// mensagem de início
-const mensagemGetReady = {
-    spriteX: 134,
-    spriteY: 0,
-    largura: 174,
-    altura: 154,
-    x: (canvas.width / 2) - 174 / 2,
-    y: 50,
-
-    desenha() {
-        contexto.drawImage(
-            sprites,
-            mensagemGetReady.spriteX, mensagemGetReady.spriteY,
-            mensagemGetReady.largura, mensagemGetReady.altura,
-            mensagemGetReady.x, mensagemGetReady.y,
-            mensagemGetReady.largura, mensagemGetReady.altura,
-        )
-    }
-}
-
-
 // background 
 const planoDeFundo = {
     spriteX: 390,
@@ -64,6 +43,7 @@ const planoDeFundo = {
     },
 };
 
+// Chao
 function criaoChao() {
     const chao = {
         spriteX: 0,
@@ -100,7 +80,6 @@ function criaoChao() {
     return chao;
 
 }
-
 
 function fazColisao(flappyBird,
     chao) {
@@ -158,6 +137,26 @@ function criaFlappyBird() {
         }
     }
     return flappyBird;
+}
+
+// mensagem de início
+const mensagemGetReady = {
+    spriteX: 134,
+    spriteY: 0,
+    largura: 174,
+    altura: 154,
+    x: (canvas.width / 2) - 174 / 2,
+    y: 50,
+
+    desenha() {
+        contexto.drawImage(
+            sprites,
+            mensagemGetReady.spriteX, mensagemGetReady.spriteY,
+            mensagemGetReady.largura, mensagemGetReady.altura,
+            mensagemGetReady.x, mensagemGetReady.y,
+            mensagemGetReady.largura, mensagemGetReady.altura,
+        )
+    }
 }
 
 
