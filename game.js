@@ -78,11 +78,9 @@ function criaoChao() {
 
     };
     return chao;
-
 }
 
-function fazColisao(flappyBird,
-    chao) {
+function fazColisao(flappyBird, chao) {
     const flappyBirdY = flappyBird.y + flappyBird.altura;
     const chaoY = chao.y;
 
@@ -103,14 +101,16 @@ function criaFlappyBird() {
         x: 10,
         y: 50,
         pulo: 4.6,
-        gravidade: 0.25,
-        velocidade: 0,
         pula() {
             console.log('Devo pular');
+            console.log('[antes]', flappyBird.velocidade)
             flappyBird.velocidade = -flappyBird.pulo;
+            console.log('[depois]', flappyBird.velocidade)
         },
+        gravidade: 0.25,
+        velocidade: 0,
         atualiza() {
-            if (fazColisao(flappyBird, chao)) {
+            if (fazColisao(flappyBird, globais.chao)) {
                 console.log('Fez colisao')
                 somDe_HIT.play();
 
