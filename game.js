@@ -59,6 +59,10 @@ function criaoChao() {
             const repeteEm = chao.largura / 2
             const movimentacao = chao.x - movimentoDoChao;
 
+            // console.log('[chao.x]', chao.x);
+            // console.log('[repeteEm]', repeteEm);
+            // console.log('[movimentacao]', movimentacao % repeteEm);
+
             chao.x = movimentoDoChao % repeteEm;
         },
         desenha() {
@@ -128,12 +132,21 @@ function criaFlappyBird() {
             // console.log(flappyBird.velocidade)
             flappyBird.y = flappyBird.y + flappyBird.velocidade;
         },
-
+        movimentos : [
+            {spriteX: 0, spriteY: 0,}, // as pra cima
+            {spriteX: 0, spriteY: 26,}, // asa no meio
+            {spriteX: 0, spriteY: 52,}, // asa pra baixo
+        ],
+        frameAtual: 0,
+        atualizaOFrameAtual() {
+            
+        },
         desenha() {
+            const {spriteX, spriteY} = flappyBird.movimentos[flappyBird.frameAtual];
             // faz desenhar a parte da imagem que queremos
             contexto.drawImage(
                 sprites,
-                flappyBird.spriteX, flappyBird.spriteY,// Srpite x, Sprite Y
+                spriteX, spriteY,// Srpite x, Sprite Y
                 flappyBird.largura, flappyBird.altura, // Tamanho do recorte na sprite
                 flappyBird.x, flappyBird.y, // posição X e Y dentro do canva
                 flappyBird.largura, flappyBird.altura,
