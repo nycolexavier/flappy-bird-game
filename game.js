@@ -195,6 +195,36 @@ const mensagemGetReady = {
     }
 }
 
+function criaCanos() {
+    const canos = {
+        largura: 52,
+        altura: 400,
+        chao : {
+            spriteX: 0,
+            spriteY: 169,
+        },
+        ceu : {
+            spriteX: 52,
+            spriteY: 169,
+        },
+        espaco: 80,
+        desenha() {
+            const canoCeuX = 220;
+            const canoCeuY = 0;
+
+            // [Cano do Céu]
+            contexto.drawImage (
+                sprites,
+                canos.ceu.spriteX, canos.ceu.spriteY,
+                canos.largura, canos.altura,
+                canoCeuX, canoCeuY,
+                canos.largura, canos.altura,
+            )
+        },
+    }
+    return canos;
+}
+
 
 
 // Telas
@@ -213,12 +243,14 @@ const Telas = {
         inicializa() {
             globais.flappyBird = criaFlappyBird();
             globais.chao = criaoChao();
+            globais.canos = criaCanos();
         },
         desenha() {
             planoDeFundo.desenha();
             globais.chao.desenha();
             globais.flappyBird.desenha();
-            mensagemGetReady.desenha();
+            globais.canos.desenha();
+            //mensagemGetReady.desenha();
         },
         click() {
             mudaParaTela(Telas.JOGO)
