@@ -299,8 +299,9 @@ function criaCanos() {
                par.x = par.x - 2;
 
                if(canos.temColisaoComOFlappyBird(par)) {
-                console.log('Perdeu :(')
-                mudaParaTela(Telas.inicio)
+                console.log('Perdeu :(');
+                somDe_HIT.play();
+                mudaParaTela(Telas.GAME_OVER)
                }
 
                if(par.x + canos.largura <= 0) {
