@@ -1,6 +1,6 @@
 // ctx === contexto
 
-
+let frames = 0;
 const somDe_HIT = new Audio;
 somDe_HIT.src = "efeitos/efeitos_hit.wav";
 
@@ -133,16 +133,21 @@ function criaFlappyBird() {
             flappyBird.y = flappyBird.y + flappyBird.velocidade;
         },
         movimentos : [
-            {spriteX: 0, spriteY: 0,}, // as pra cima
+            {spriteX: 0, spriteY: 0,}, // asa pra cima
             {spriteX: 0, spriteY: 26,}, // asa no meio
             {spriteX: 0, spriteY: 52,}, // asa pra baixo
         ],
         frameAtual: 0,
         atualizaOFrameAtual() {
-            
+            const baseDoIncremento = 1;
+            const incremento = baseDoIncremento + flappyBird.frameAtual;
+            const baseRepeticao = flappyBird.movimentos.length;
+            flappyBird.frameAtual = incremento % baseRepeticao;
         },
         desenha() {
+            flappyBird.atualizaOFrameAtual();
             const {spriteX, spriteY} = flappyBird.movimentos[flappyBird.frameAtual];
+
             // faz desenhar a parte da imagem que queremos
             contexto.drawImage(
                 sprites,
@@ -232,6 +237,8 @@ function loop() {
 
     telaAtiva.desenha();
     telaAtiva.atualiza();
+
+    frames = frames + 1;
 
     // ajudar a reproduzir os quadros do jogo
     requestAnimationFrame(loop);
