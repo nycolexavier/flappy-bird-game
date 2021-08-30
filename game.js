@@ -297,11 +297,16 @@ function criaPlacar() {
     const placar = {
         pontuacao: 0,
         desenha() {
-            contexto.font = '50px serif';
+            contexto.font = '35px "VT323"';
+            contexto.textAlign = 'right'
             contexto.fillStyle = 'white';
-            contexto.fillText(`Hello World ${placar.pontuacao}`, 50, 90);
+            contexto.fillText(`Hello World ${placar.pontuacao}`, canvas.width - 10, 35);
         },
-        atualiza() {}
+        atualiza() {
+            const intervaloDeFrames = 10;
+            const passouOIntervalo = frames % intervaloDeFrames === 0;
+            placar.pontuacao = placar.pontuacao + 1;
+        }
     }
     return placar;
 }
