@@ -1,6 +1,6 @@
 ![flappy-bird-game-banner](https://user-images.githubusercontent.com/74930052/131127066-d87269b3-6a94-41ce-8707-9d940ea37123.png)
 ----
-<img src="https://img.shields.io/static/v1?label=Status&message=incomplete&color=ff0000&style=for-the-badge&logo=ghost"/>
+<img src="https://img.shields.io/static/v1?label=Status&message=complete&color=008000&style=for-the-badge&logo=ghost"/>
  
 <p align="center">A aula esta disponível no canal KnifeCircus <a href="https://www.youtube.com/watch?v=bG2BmmYr9NQ&t=310s" > Aqui </a> </p>
 
@@ -19,10 +19,10 @@ Nesse repositório guardo o jogo que foi proposto nessa aula.
 
 - [X] Criando um Flappy Bird do ZERO!!!
 - [X] Troca de Tela e Gravidade
-- [ ] Colisão, Pulo, Web Audio API
-- [ ] Cenário infinito a animando o passarinho com frames
-- [ ] Desenhando obstáculos dinamicamento e detectando Colisão
-- [ ] Adicionando o Placar, Tela de game over e muito mais! 
+- [X] Colisão, Pulo, Web Audio API
+- [X] Cenário infinito a animando o passarinho com frames
+- [X] Desenhando obstáculos dinamicamento e detectando Colisão
+- [X] Adicionando o Placar, Tela de game over e muito mais! 
 
 
 ### Tecnologias
