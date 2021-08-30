@@ -293,6 +293,18 @@ function criaCanos() {
     return canos;
 }
 
+function criaPlacar() {
+    const placar = {
+        pontuacao: 0,
+        desenha() {
+            contexto.font = '50px serif';
+            contexto.fillStyle = 'white';
+            contexto.fillText(`Hello World ${placar.pontuacao}`, 50, 90);
+        },
+        atualiza() {}
+    }
+    return placar;
+}
 
 
 // Telas
@@ -329,11 +341,15 @@ const Telas = {
 }
 
 Telas.JOGO = {
+    inicializa() {
+        globais.placar = criaPlacar();
+    },
     desenha() {
         planoDeFundo.desenha();
         globais.canos.desenha();
         globais.chao.desenha();
         globais.flappyBird.desenha();
+        globais.placar.desenha();
     },
     click() {
         globais.flappyBird.pula();
@@ -343,6 +359,7 @@ Telas.JOGO = {
         globais.canos.atualiza();
         globais.chao.atualiza();
         globais.flappyBird.atualiza();
+        globais.placar.atualiza();
     }
 }
 
