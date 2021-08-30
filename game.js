@@ -122,9 +122,7 @@ function criaFlappyBird() {
                 console.log('Fez colisao')
                 somDe_HIT.play();
 
-                setTimeout(() => {
-                    mudaParaTela(Telas.inicio)
-                }, 500)
+                mudaParaTela(Telas.GAME_OVER)
                 return;
             }
 
@@ -195,6 +193,28 @@ const mensagemGetReady = {
     }
 }
 
+// MensagemGameOver
+const mensagemGameOver = {
+    spriteX: 134,
+    spriteY: 153,
+    largura: 226,
+    altura: 200,
+    x: (canvas.width / 2) - 226 / 2,
+    y: 50,
+
+    desenha() {
+        contexto.drawImage(
+            sprites,
+            mensagemGameOver.spriteX, mensagemGameOver.spriteY,
+            mensagemGameOver.largura, mensagemGameOver.altura,
+            mensagemGameOver.x, mensagemGameOver.y,
+            mensagemGameOver.largura, mensagemGameOver.altura,
+        )
+    }
+}
+
+
+// [criaCanos]
 function criaCanos() {
     const canos = {
         largura: 52,
@@ -293,6 +313,7 @@ function criaCanos() {
     return canos;
 }
 
+// Placar
 function criaPlacar() {
     const placar = {
         pontuacao: 0,
@@ -300,12 +321,15 @@ function criaPlacar() {
             contexto.font = '35px "VT323"';
             contexto.textAlign = 'right'
             contexto.fillStyle = 'white';
-            contexto.fillText(`Hello World ${placar.pontuacao}`, canvas.width - 10, 35);
+            contexto.fillText(`${placar.pontuacao}`, canvas.width - 10, 35);
         },
         atualiza() {
             const intervaloDeFrames = 10;
             const passouOIntervalo = frames % intervaloDeFrames === 0;
-            placar.pontuacao = placar.pontuacao + 1;
+
+            if(passouOIntervalo) {
+                placar.pontuacao = placar.pontuacao + 1;
+            }
         }
     }
     return placar;
@@ -365,6 +389,16 @@ Telas.JOGO = {
         globais.chao.atualiza();
         globais.flappyBird.atualiza();
         globais.placar.atualiza();
+    }
+}
+
+Telas.GAME_OVER = {
+    desenha() {
+        mensagemGameOver.desenha();
+    },
+    atualiza() {},
+    click(){
+        mudaParaTela(Telas.inicio);
     }
 }
 
