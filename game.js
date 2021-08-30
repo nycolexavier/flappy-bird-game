@@ -54,16 +54,16 @@ function criaoChao() {
         // altura total do canva e subtrai 112
         y: canvas.height - 112,
         atualiza() {
-            //console.log('Vamos mexer o chão')
             const movimentoDoChao = 1;
-            const repeteEm = chao.largura / 2
+            const repeteEm = chao.largura / 2;
             const movimentacao = chao.x - movimentoDoChao;
 
-            // console.log('[chao.x]', chao.x);
+            // console.log('[chao.x]', chao.x);    
             // console.log('[repeteEm]', repeteEm);
             // console.log('[movimentacao]', movimentacao % repeteEm);
 
-            chao.x = movimentoDoChao % repeteEm;
+            chao.x = movimentacao % repeteEm;
+
         },
         desenha() {
             contexto.drawImage(
