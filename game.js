@@ -279,7 +279,8 @@ function criaCanos() {
                par.x = par.x - 2;
 
                if(canos.temColisaoComOFlappyBird(par)) {
-                console.log('perde')
+                console.log('Perdeu :(')
+                mudaParaTela(Telas.inicio)
                }
 
                if(par.x + canos.largura <= 0) {
@@ -315,16 +316,14 @@ const Telas = {
         desenha() {
             planoDeFundo.desenha();
             globais.flappyBird.desenha();
-            globais.canos.desenha();
             globais.chao.desenha();
-            //mensagemGetReady.desenha();
+            mensagemGetReady.desenha();
         },
         click() {
             mudaParaTela(Telas.JOGO)
         },
         atualiza() {
             globais.chao.atualiza();
-            globais.canos.atualiza();
         }
     }
 }
@@ -332,6 +331,7 @@ const Telas = {
 Telas.JOGO = {
     desenha() {
         planoDeFundo.desenha();
+        globais.canos.desenha();
         globais.chao.desenha();
         globais.flappyBird.desenha();
     },
@@ -340,8 +340,9 @@ Telas.JOGO = {
     },
     atualiza() {
         // chama a função que esta dentro da variável fllapyBird
-        globais.flappyBird.atualiza();
+        globais.canos.atualiza();
         globais.chao.atualiza();
+        globais.flappyBird.atualiza();
     }
 }
 
