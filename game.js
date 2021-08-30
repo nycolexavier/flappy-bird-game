@@ -228,7 +228,7 @@ function criaCanos() {
                 )
 
                 // [Cano do Chão]
-                const canoChaoX = 220;
+                const canoChaoX = par.x;
                 const canoChaoY = canos.altura + espacamentoEntreCanos + yRandom;
                 contexto.drawImage(
                     sprites,
@@ -237,7 +237,32 @@ function criaCanos() {
                     canoChaoX, canoChaoY,
                     canos.largura, canos.altura,
                 )
+                par.canoCeu = {
+                    x: canoCeuX,
+                    y: canos.altura + canoCeuY
+                }
+                par.canoChao = {
+                    x: canoChaoX,
+                    y: canoChaoY
+                }
             })
+        },
+        temColisaoComOFlappyBird(par) {
+
+            const cabecaDoFlappyBird = globais.flappyBird.y;
+            const peDoFlappy = globais.flappyBird.y + globais.flappyBird.altura;
+
+            if(globais.flappyBird.x >= par.x) {
+                console.log('Flappy Bird')
+
+                if(cabecaDoFlappyBird <= par.canoCeu.y) {
+                    return true;
+                }
+
+                if(peDoFlappy >= par.canoChao.y) {
+                    return true;
+                }
+            }
         },
         pares: [],
         atualiza() {
@@ -252,6 +277,10 @@ function criaCanos() {
 
             canos.pares.forEach(function(par){
                par.x = par.x - 2;
+
+               if(canos.temColisaoComOFlappyBird(par)) {
+                console.log('perde')
+               }
 
                if(par.x + canos.largura <= 0) {
                 canos.pares.shift();
