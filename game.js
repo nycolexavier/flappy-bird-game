@@ -132,35 +132,35 @@ function criaFlappyBird() {
             // console.log(flappyBird.velocidade)
             flappyBird.y = flappyBird.y + flappyBird.velocidade;
         },
-        movimentos : [
-            {spriteX: 0, spriteY: 0,}, // asa pra cima
-            {spriteX: 0, spriteY: 26,}, // asa no meio
-            {spriteX: 0, spriteY: 52,}, // asa pra baixo
-            {spriteX: 0, spriteY: 26,}, // asa no meio
+        movimentos: [
+            { spriteX: 0, spriteY: 0, }, // asa pra cima
+            { spriteX: 0, spriteY: 26, }, // asa no meio
+            { spriteX: 0, spriteY: 52, }, // asa pra baixo
+            { spriteX: 0, spriteY: 26, }, // asa no meio
         ],
         frameAtual: 0,
         atualizaOFrameAtual() {
             const intervaloDeFrames = 10;
             const passouOIntervalo = frames % intervaloDeFrames === 0;
 
-            if(passouOIntervalo) {
+            if (passouOIntervalo) {
                 // asa do bird
-            const baseDoIncremento = 1;
-            const incremento = baseDoIncremento + flappyBird.frameAtual;
-            const baseRepeticao = flappyBird.movimentos.length;
-            flappyBird.frameAtual = incremento % baseRepeticao;
+                const baseDoIncremento = 1;
+                const incremento = baseDoIncremento + flappyBird.frameAtual;
+                const baseRepeticao = flappyBird.movimentos.length;
+                flappyBird.frameAtual = incremento % baseRepeticao;
 
-            
-            // console.log('[incremento]', incremento);    
-            // console.log('[baseRepeticao]', baseRepeticao);
-            // console.log('[frame]', incremento % baseRepeticao);
+
+                // console.log('[incremento]', incremento);    
+                // console.log('[baseRepeticao]', baseRepeticao);
+                // console.log('[frame]', incremento % baseRepeticao);
 
             }
-            
+
         },
         desenha() {
             flappyBird.atualizaOFrameAtual();
-            const {spriteX, spriteY} = flappyBird.movimentos[flappyBird.frameAtual];
+            const { spriteX, spriteY } = flappyBird.movimentos[flappyBird.frameAtual];
 
             // faz desenhar a parte da imagem que queremos
             contexto.drawImage(
@@ -199,38 +199,54 @@ function criaCanos() {
     const canos = {
         largura: 52,
         altura: 400,
-        chao : {
+        chao: {
             spriteX: 0,
             spriteY: 169,
         },
-        ceu : {
+        ceu: {
             spriteX: 52,
             spriteY: 169,
         },
         espaco: 80,
         desenha() {
-            const canoCeuX = 220;
-            const canoCeuY = 0;
 
-            // [Cano do Céu]
-            contexto.drawImage (
-                sprites,
-                canos.ceu.spriteX, canos.ceu.spriteY,
-                canos.largura, canos.altura,
-                canoCeuX, canoCeuY,
-                canos.largura, canos.altura,
-            )
+            canos.pares.forEach(function (par) {
+                const yRandom = - 200;
+                const espacamentoEntreCanos = 90;
 
-            const canoChaoX = 220;
-            const canoChaoY = 0;
-            contexto.drawImage(
-                sprites,
-                canos.chao.spriteX, canos.chao.spriteY,
-                canos.largura, canos.altura,
-                canoChaoX, canoChaoY,
-                canos.largura, canos.altura,
-            )
+
+                const canoCeuX = 220;
+                const canoCeuY = yRandom;
+
+
+                // [Cano do Céu]
+                contexto.drawImage(
+                    sprites,
+                    canos.ceu.spriteX, canos.ceu.spriteY,
+                    canos.largura, canos.altura,
+                    canoCeuX, canoCeuY,
+                    canos.largura, canos.altura,
+                )
+
+                // [Cano do Chão]
+                const canoChaoX = 220;
+                const canoChaoY = canos.altura + espacamentoEntreCanos + yRandom;
+                contexto.drawImage(
+                    sprites,
+                    canos.chao.spriteX, canos.chao.spriteY,
+                    canos.largura, canos.altura,
+                    canoChaoX, canoChaoY,
+                    canos.largura, canos.altura,
+                )
+            })
         },
+        pares: [],
+        atualiza() {
+            const passou100Frames = frames % 100 === 0;
+            if (passou100Frames) {
+                console.log('Passou 100 Frames')
+            }
+        }
     }
     return canos;
 }
@@ -267,6 +283,7 @@ const Telas = {
         },
         atualiza() {
             globais.chao.atualiza();
+            globais.canos.atualiza();
         }
     }
 }
