@@ -220,6 +220,16 @@ function criaCanos() {
                 canoCeuX, canoCeuY,
                 canos.largura, canos.altura,
             )
+
+            const canoChaoX = 220;
+            const canoChaoY = 0;
+            contexto.drawImage(
+                sprites,
+                canos.chao.spriteX, canos.chao.spriteY,
+                canos.largura, canos.altura,
+                canoChaoX, canoChaoY,
+                canos.largura, canos.altura,
+            )
         },
     }
     return canos;
