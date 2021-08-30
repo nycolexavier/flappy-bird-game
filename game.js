@@ -136,13 +136,27 @@ function criaFlappyBird() {
             {spriteX: 0, spriteY: 0,}, // asa pra cima
             {spriteX: 0, spriteY: 26,}, // asa no meio
             {spriteX: 0, spriteY: 52,}, // asa pra baixo
+            {spriteX: 0, spriteY: 26,}, // asa no meio
         ],
         frameAtual: 0,
         atualizaOFrameAtual() {
+            const intervaloDeFrames = 10;
+            const passouOIntervalo = frames % intervaloDeFrames === 0;
+
+            if(passouOIntervalo) {
+                // asa do bird
             const baseDoIncremento = 1;
             const incremento = baseDoIncremento + flappyBird.frameAtual;
             const baseRepeticao = flappyBird.movimentos.length;
             flappyBird.frameAtual = incremento % baseRepeticao;
+
+            
+            // console.log('[incremento]', incremento);    
+            // console.log('[baseRepeticao]', baseRepeticao);
+            // console.log('[frame]', incremento % baseRepeticao);
+
+            }
+            
         },
         desenha() {
             flappyBird.atualizaOFrameAtual();
