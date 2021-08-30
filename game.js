@@ -211,11 +211,10 @@ function criaCanos() {
         desenha() {
 
             canos.pares.forEach(function (par) {
-                const yRandom = - 200;
+                const yRandom = par.y;
                 const espacamentoEntreCanos = 90;
 
-
-                const canoCeuX = 220;
+                const canoCeuX = par.x;
                 const canoCeuY = yRandom;
 
 
@@ -245,7 +244,20 @@ function criaCanos() {
             const passou100Frames = frames % 100 === 0;
             if (passou100Frames) {
                 console.log('Passou 100 Frames')
+                canos.pares.push({
+                    x: canvas.width,
+                    y: -150 * (Math.random() + 1),
+                })
             }
+
+            canos.pares.forEach(function(par){
+               par.x = par.x - 2;
+
+               if(par.x + canos.largura <= 0) {
+                canos.pares.shift();
+               }
+            })
+
         }
     }
     return canos;
@@ -273,9 +285,9 @@ const Telas = {
         },
         desenha() {
             planoDeFundo.desenha();
-            globais.chao.desenha();
             globais.flappyBird.desenha();
             globais.canos.desenha();
+            globais.chao.desenha();
             //mensagemGetReady.desenha();
         },
         click() {
